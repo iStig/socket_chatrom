@@ -9,7 +9,7 @@
 #import "SocketFinder.h"
 #import "GCDAsyncUdpSocket.h"
 
-@interface SocketFinder () <SocketHelperDelegate>
+@interface SocketFinder () <SocketHelperDelegate,GCDAsyncUdpSocketDelegate>
 
 @property (nonatomic, strong) GCDAsyncUdpSocket *socket;
 @property (nonatomic, assign) BOOL isServer;
@@ -29,8 +29,8 @@
 - (void)open {
     [self close];
     self.socket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
-    [_socket setIPv4Enabled:YES];
-    [_socket setIPv6Enabled:NO];
+//    [_socket setIPv4Enabled:YES];
+//    [_socket setIPv6Enabled:YES];
 }
 
 - (void)close {
